@@ -11,12 +11,12 @@ export const removeFromFav = (company) => ({
 export const fetchJobs = (url, query) => {
   return async (dispatch, getState) => {
     try {
-      let resp = await fetch(url + query);
+      let resp = await fetch(url + query + '&limit=20');
       if (resp.ok) {
-        const { jobs } = await resp.json();
+        const { data } = await resp.json();
         dispatch({
           type: "FETCH_JOBS",
-          payload: jobs,
+          payload: data,
         });
       } else {
         console.log("error");
