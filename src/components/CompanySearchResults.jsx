@@ -13,13 +13,13 @@ export default class CompanySearchResults extends React.Component {
         this.getJobs()
     }
 
-    baseEndpoint = 'https://remotive.io/api/remote-jobs?company_name='
+    baseEndpoint = 'https://strive-jobs-api.herokuapp.com/jobs?company='
 
     getJobs = async () => {
         const response = await fetch(this.baseEndpoint + this.props.match.params.companyName)
-        const {jobs} = await response.json()
+        const { data } = await response.json()
 
-        this.setState({ jobs })
+        this.setState({ jobs: data })
     }
     
     render(){
