@@ -13,7 +13,7 @@ const MainSearch = () => {
   const dispatch = useDispatch();
   const jobs = useSelector((s) => s.jobs);
 
-  const baseEndpoint = "https://remotive.io/api/remote-jobs?search=";
+  const baseEndpoint = "https://strive-jobs-api.herokuapp.com/jobs?search=";
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -35,7 +35,7 @@ const MainSearch = () => {
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
-            <Form.Control type="search" value={query} onChange={handleChange} />
+            <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
           </Form>
         </Col>
         <Col xs={10} className="mx-auto mb-5">
