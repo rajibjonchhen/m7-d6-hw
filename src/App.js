@@ -3,7 +3,7 @@ import "./App.css";
 import MainSearch from "./components/MainSearch";
 import CompanySearchResults from "./components/CompanySearchResults";
 import Favourites from "./components/Favourites";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { configureStore, persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
@@ -13,15 +13,11 @@ function App() {
     <Provider store={configureStore}>
       <PersistGate persistor={persistor} loading={null}>
         <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={MainSearch} />
-            <Route exact path="/favourites" component={Favourites} />
-            <Route
-              exact
-              path="/:companyName"
-              component={CompanySearchResults}
-            />
-          </Switch>
+          <Routes>
+            <Route path="/" element={<MainSearch />} />
+            <Route path="/favourites" element={<Favourites />} />
+            <Route path="/:companyName" element={<CompanySearchResults />} />
+          </Routes>
         </BrowserRouter>
       </PersistGate>
     </Provider>
